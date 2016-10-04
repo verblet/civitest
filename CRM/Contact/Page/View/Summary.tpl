@@ -200,6 +200,24 @@
                         {/if}
                       </div>
                     </div>
+
+                    <div class="crm-summary-row">
+                      <div class="crm-label">
+                        Membership Type
+                      </div>
+                      <div class="crm-content">
+
+{crmAPI var='result' entity='Membership' action='get' return="membership_type_id" contact_id="$contactId"}
+{foreach from=$result.values item=membership}
+  {crmAPI var='result' entity='MembershipType' action='get' return="name" id=$membership.membership_type_id}
+  {foreach from=$result.values item=membershiptype}
+    {$membershiptype.membershiptype}
+  {/foreach}
+{/foreach}
+                      </div>
+                    </div>
+
+
                     <div class="crm-summary-row">
                       <div class="crm-label">{ts}External ID{/ts}</div>
                       <div class="crm-content crm-contact_external_identifier_label">
@@ -212,15 +230,6 @@
             </div>
             <!-- end of right side -->
         </div>
-
-{crmAPI var='result' entity='Membership' action='get' return="membership_type_id" contact_id="$contactId"}
-{foreach from=$result.values item=membership}
-  {crmAPI var='result' entity='MembershipType' action='get' return="name" id=$membership.membership_type_id}
-  {foreach from=$result.values item=membershiptype}
-    {$membershiptype.membershiptype}
-  {/foreach}
-{/foreach}
-
 
 
         <div class="contact_details">
