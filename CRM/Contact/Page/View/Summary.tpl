@@ -212,6 +212,17 @@
             </div>
             <!-- end of right side -->
         </div>
+
+{crmAPI var='result' entity='Membership' action='get' return="membership_type_id" contact_id="$contactId"}
+{foreach from=$result.values item=membership}
+  {crmAPI var='result' entity='MembershipType' action='get' return="name" id=$membership.membership_type_id}
+  {foreach from=$result.values item=membershiptype}
+    {$membershiptype.membershiptype}
+  {/foreach}
+{/foreach}
+
+
+
         <div class="contact_details">
           <div class="contact_panel">
             <div class="contactCardLeft">
