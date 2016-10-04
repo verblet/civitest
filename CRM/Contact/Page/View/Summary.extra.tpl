@@ -36,7 +36,7 @@
 {literal}
 <script>
 CRM.$(function($){
-  $('#summary-extra').appendTo($('#contact-summary .crm-summary-block'));
+  $('#summary-extra').appendTo($('#contact-summary .contactCardRight .crm-summary-block'));
 });
 </script>
 {/literal}
