@@ -219,6 +219,19 @@
 
 
                     <div class="crm-summary-row">
+                      <div class="crm-label">
+                        Total Contributions
+                      </div>
+                      <div class="crm-content">
+
+{crmAPI var='result' entity='Contribution' action='get' return="total_amount" contact_id=""$contactId"}
+{foreach from=$result.values item=contribution}$contribution.total_amount
+  {assign var='total_contribs' value=$total_contribs+$contribution.total_amount"}
+{/foreach}
+{$total_contribs}
+                      </div>
+                    </div>
+                    <div class="crm-summary-row">
                       <div class="crm-label">{ts}External ID{/ts}</div>
                       <div class="crm-content crm-contact_external_identifier_label">
                         {if isset($external_identifier)}{$external_identifier}{/if}
