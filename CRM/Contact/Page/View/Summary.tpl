@@ -207,11 +207,11 @@
                       </div>
                       <div class="crm-content">
 
-{crmAPI var='result' entity='Membership' action='get' return="membership_type_id" contact_id="$contactId"}
-{foreach from=$result.values item=membership}
-  {crmAPI var='result' entity='MembershipType' action='get' return="name" id=$membership.membership_type_id}
-  {foreach from=$result.values item=membershiptype}
-    {$membershiptype.membershiptype}
+{crmAPI var='memberships' entity='Membership' action='get' contact_id="$contactId"}
+{foreach from=$memberships.values item=membership}
+  {crmAPI var='mtypes' entity='MembershipType' action='get' return="name" id=$membership.membership_type_id}
+  {foreach from=$mtypes.values item=membershiptype}
+    {$mtypes.name}
   {/foreach}
 {/foreach}
                       </div>
