@@ -224,6 +224,7 @@
                       </div>
                       <div class="crm-content">
 
+{assign var='total_contribs' value=0}
 {crmAPI var='result' entity='Contribution' action='get' return="total_amount" contact_id="$contactId"}
 {foreach from=$result.values item=contribution}$contribution.total_amount
   {assign var='total_contribs' value=$total_contribs+$contribution.total_amount"}
